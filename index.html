@@ -250,11 +250,7 @@ table.dt tr.avg-row td:first-child{color:var(--y);}
 #tab-meta .metric-toggle-all:hover{color:#2563eb;background:rgba(37,99,235,.08);}
 #tab-meta .sale-type-btn:hover{border-color:#2563eb;color:var(--text);}
 #tab-meta .sale-type-btn.active{background:rgba(37,99,235,.1);border-color:#2563eb;color:#2563eb;}
-.meta-preview-hd{background:linear-gradient(135deg,#1d4ed8,#2563eb);color:#fff;}
-.meta-chat-bg{background:#e8eef8;padding:14px 12px;flex:1;overflow-y:auto;}
-.meta-chat-avatar{width:36px;height:36px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff;}
-.btn-meta-copy{width:100%;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:13px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:opacity .15s;display:flex;align-items:center;justify-content:center;gap:7px;}
-.btn-meta-copy:hover{opacity:.88;}
+/* meta preview panel은 kk-preview-panel과 동일 스타일 사용 */
 .meta-api-section{display:flex;flex-direction:column;gap:6px;}
 .meta-api-inp{width:100%;padding:8px 11px;border:1.5px solid var(--border);border-radius:9px;background:var(--s2);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;outline:none;transition:border-color .15s;}
 .meta-api-inp:focus{border-color:#2563eb;}
@@ -305,14 +301,17 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
 
 /* 카카오 프리뷰 */
 .kk-preview-panel{background:var(--s1);border:1px solid var(--border2);border-radius:var(--rad);overflow:hidden;display:flex;flex-direction:column;}
-.kk-preview-hd{padding:10px 14px;background:#FEE500;font-size:11px;font-weight:800;color:#3C1E1E;display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.kk-preview-hd{padding:10px 14px;background:#FEE500;font-size:11px;font-weight:800;color:#000;display:flex;align-items:center;gap:6px;flex-shrink:0;}
 .chat-bg{background:#baccd9;padding:14px 12px;flex:1;overflow-y:auto;}
 .chat-row{display:flex;gap:8px;align-items:flex-start;}
 .chat-avatar{width:36px;height:36px;background:#FEE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .chat-sender{font-size:10px;font-weight:700;color:rgba(0,0,0,.5);margin-bottom:4px;}
-.chat-bubble{background:#fff;border-radius:4px 14px 14px 14px;padding:12px 14px;max-width:92%;box-shadow:0 1px 4px rgba(0,0,0,.1);font-size:12px;line-height:1.8;white-space:pre-wrap;word-break:break-all;color:#1a1a1a;font-family:'Noto Sans KR',sans-serif;}
-.btn-copy{width:100%;background:#FEE500;color:#3C1E1E;border:none;padding:13px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:opacity .15s;display:flex;align-items:center;justify-content:center;gap:7px;}
+.chat-bubble{background:#fff;border-radius:4px 14px 14px 14px;padding:12px 14px;max-width:100%;width:100%;box-shadow:0 1px 4px rgba(0,0,0,.1);font-size:12px;line-height:1.8;white-space:pre-wrap;word-break:break-all;color:#1a1a1a;font-family:'Noto Sans KR',sans-serif;}
+.btn-copy{width:100%;background:#FEE500;color:#000;border:none;padding:13px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:opacity .15s;display:flex;align-items:center;justify-content:center;gap:7px;}
 .btn-copy:hover{opacity:.88;}
+/* meta preview panel — 카카오 동일 스타일 */
+.btn-meta-copy{width:100%;background:#FEE500;color:#000;border:none;padding:13px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:opacity .15s;display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-meta-copy:hover{opacity:.88;}
 
 /* ══ MODALS ══ */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);z-index:500;align-items:center;justify-content:center;padding:20px;}
@@ -417,7 +416,7 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
       </div>
     </div>
     <div class="topbar-tabs">
-      <button class="tab-btn active" onclick="switchTab('kakao',this)">카카오톡 보고서</button>
+      <button class="tab-btn active" onclick="switchTab('kakao',this)">🟢 네이버 보고서</button>
       <button class="tab-btn" onclick="switchTab('meta',this)">🔵 메타 보고서</button>
     </div>
   </div>
@@ -430,7 +429,7 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
     <div class="kk-input-panel">
       <div class="kk-panel-hd">
         <div class="kk-panel-hd-dot"></div>
-        보고서 설정
+        네이버 보고서 설정
         <span style="margin-left:auto;font-size:10px;color:var(--g);font-weight:700;font-family:'JetBrains Mono',monospace" id="kakao-period-label"></span>
       </div>
       <div class="kk-panel-body">
@@ -486,7 +485,7 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
               <button id="btn-hide-comment" onclick="toggleSectionHide('comment')" title="숨기기" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:11px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0;font-weight:800;font-family:inherit" onmouseover="this.style.borderColor='var(--text2)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text3)'">👁</button>
             </span>
           </label>
-          <textarea class="kk-inp" id="comment" rows="4" placeholder="이번 기간 주요 성과와 인사이트를 입력하세요." style="min-height:80px"></textarea>
+          <textarea class="kk-inp" id="comment" rows="4" placeholder="이번 기간 네이버 광고 주요 성과와 인사이트를 입력하세요." style="min-height:80px;font-size:13px;line-height:1.7"></textarea>
         </div>
 
         <!-- 운영 계획 -->
@@ -497,7 +496,7 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
             </span>
             <button id="btn-hide-plan" onclick="toggleSectionHide('plan')" title="숨기기" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:11px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0;font-weight:800;font-family:inherit" onmouseover="this.style.borderColor='var(--text2)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text3)'">👁</button>
           </label>
-          <textarea class="kk-inp" id="plan" rows="4" placeholder="오늘 진행할 최적화 작업을 입력하세요." style="min-height:80px"></textarea>
+          <textarea class="kk-inp" id="plan" rows="4" placeholder="오늘 진행할 네이버 광고 최적화 작업을 입력하세요." style="min-height:80px;font-size:13px;line-height:1.7"></textarea>
         </div>
 
 
@@ -506,17 +505,18 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
 
     <!-- 우측: 미리보기 -->
     <div class="kk-preview-panel">
-      <div class="kk-preview-hd">🟡 카카오톡 보고 미리보기</div>
+      <div class="kk-preview-hd">카카오톡 보고 미리보기</div>
       <div class="chat-bg">
         <div class="chat-row">
           <div class="chat-avatar">📊</div>
           <div>
             <div class="chat-sender">마케터</div>
-            <div class="chat-bubble" id="kakao-preview">데이터를 불러오면 보고 문구가 자동으로 생성됩니다.</div>
+            <div class="chat-bubble" id="kakao-preview">광고주 목록에서 네이버 광고주를 선택 후
+조회하면 자동으로 생성됩니다.</div>
           </div>
         </div>
       </div>
-      <button class="btn-copy" onclick="copyKakao()">📋 카카오톡 문구 복사하기</button>
+      <button class="btn-copy" onclick="copyKakao()">카카오톡 문구 복사하기</button>
     </div>
 
   </div>
@@ -534,15 +534,14 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
       </div>
       <div class="kk-panel-body">
 
-        <!-- Meta API 연결 -->
-        <div class="kk-field">
-          <label class="kk-label"><span class="kk-label-icon">🔑</span> Meta API 연결</label>
-          <div class="meta-api-section">
-            <input class="meta-api-inp" id="meta-token" type="password" placeholder="Access Token (EAAxxxxx…)">
-            <input class="meta-api-inp" id="meta-acct" type="text" placeholder="광고 계정 ID (act_123456789)">
-            <button class="meta-connect-btn" onclick="metaConnect()">🔵 데이터 불러오기</button>
-            <div class="meta-status" id="meta-status"></div>
+        <!-- 연결된 Meta 광고주 표시 -->
+        <div id="meta-adv-info" style="display:none;padding:10px 13px;background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);border-radius:9px;font-size:11px;color:#2563eb;display:flex;align-items:center;gap:8px">
+          <span style="font-size:16px" id="meta-adv-emoji">📘</span>
+          <div>
+            <div style="font-weight:800" id="meta-adv-name">—</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;opacity:.7" id="meta-adv-acct">—</div>
           </div>
+          <div class="meta-status" id="meta-status" style="margin-left:auto;display:none"></div>
         </div>
 
         <!-- 기간 선택 -->
@@ -566,8 +565,8 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
         <div class="kk-field" id="meta-metric-wrap">
           <label class="kk-label"><span class="kk-label-icon">📊</span> 성과 항목 선택</label>
           <div class="sale-type-row">
-            <button class="sale-type-btn active" id="btn-meta-sale-y" onclick="setMetaSaleType('sale')" style="border-color:#2563eb;background:rgba(37,99,235,.1);color:#2563eb">🛒 판매형</button>
-            <button class="sale-type-btn" id="btn-meta-sale-n" onclick="setMetaSaleType('nonsale')">📢 비판매형</button>
+            <button class="sale-type-btn active" id="btn-meta-sale-y" onclick="setMetaSaleType('sale')" style="border-color:#2563eb;background:rgba(37,99,235,.1);color:#2563eb">🛒 판매</button>
+            <button class="sale-type-btn" id="btn-meta-sale-n" onclick="setMetaSaleType('nonsale')">📢 비판매</button>
           </div>
           <div class="sale-type-row">
             <button id="btn-meta-diff-rate" onclick="setMetaDiffMode('rate')" class="sale-type-btn active" style="border-color:#2563eb;background:rgba(37,99,235,.1);color:#2563eb">📈 증감율 (%)</button>
@@ -582,15 +581,19 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
 
         <div class="kk-divider"></div>
 
-        <!-- 마케터 코멘트 -->
+        <!-- 마케터 코멘트 (AI 버튼 포함) -->
         <div class="kk-field">
           <label class="kk-label" style="justify-content:space-between">
             <span style="display:flex;align-items:center;gap:6px">
-              <span class="kk-label-icon">✏️</span> 마케터 코멘트
+              <span class="kk-label-icon">✏️</span> 마케터 코멘트 <span style="font-weight:400;font-size:9.5px;color:var(--text3)">성과 분석 인사이트</span>
             </span>
-            <button id="btn-hide-meta-comment" onclick="toggleMetaSectionHide('comment')" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:11px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0;font-weight:800;font-family:inherit">👁</button>
+            <span style="display:flex;align-items:center;gap:5px">
+              <button id="btn-meta-ai-analyze" onclick="runMetaAiAnalysis()" style="display:flex;align-items:center;gap:4px;background:linear-gradient(135deg,#1d4ed8,#2563eb);border:none;color:#fff;padding:4px 9px;border-radius:7px;font-size:10px;font-weight:800;font-family:inherit;cursor:pointer;transition:opacity .15s;flex-shrink:0;white-space:nowrap" onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'"><span id="meta-ai-btn-icon">✨</span><span id="meta-ai-btn-text" style="color:#fff"> AI 분석</span></button>
+              <button onclick="openMetaGeminiSettingsModal()" title="AI 설정" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:13px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0" onmouseover="this.style.borderColor='#2563eb';this.style.color='#2563eb'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text3)'">⚙️</button>
+              <button id="btn-hide-meta-comment" onclick="toggleMetaSectionHide('comment')" title="숨기기" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:11px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0;font-weight:800;font-family:inherit">👁</button>
+            </span>
           </label>
-          <textarea class="kk-inp" id="meta-comment" rows="4" placeholder="이번 기간 Meta 광고 주요 성과와 인사이트를 입력하세요." style="min-height:80px"></textarea>
+          <textarea class="kk-inp" id="meta-comment" rows="4" placeholder="이번 기간 Meta 광고 주요 성과와 인사이트를 입력하세요." style="min-height:80px;font-size:13px;line-height:1.7"></textarea>
         </div>
 
         <!-- 운영 계획 -->
@@ -599,9 +602,9 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
             <span style="display:flex;align-items:center;gap:6px">
               <span class="kk-label-icon">🎯</span> 금일 운영 계획
             </span>
-            <button id="btn-hide-meta-plan" onclick="toggleMetaSectionHide('plan')" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:11px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0;font-weight:800;font-family:inherit">👁</button>
+            <button id="btn-hide-meta-plan" onclick="toggleMetaSectionHide('plan')" title="숨기기" style="display:flex;align-items:center;justify-content:center;background:var(--s3);border:1.5px solid var(--border);color:var(--text3);width:26px;height:26px;border-radius:7px;font-size:11px;cursor:pointer;transition:all .13s;flex-shrink:0;padding:0;font-weight:800;font-family:inherit">👁</button>
           </label>
-          <textarea class="kk-inp" id="meta-plan" rows="4" placeholder="오늘 진행할 Meta 광고 최적화 작업을 입력하세요." style="min-height:80px"></textarea>
+          <textarea class="kk-inp" id="meta-plan" rows="4" placeholder="오늘 진행할 Meta 광고 최적화 작업을 입력하세요." style="min-height:80px;font-size:13px;line-height:1.7"></textarea>
         </div>
 
       </div>
@@ -609,17 +612,18 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
 
     <!-- 우측: 미리보기 -->
     <div class="kk-preview-panel">
-      <div class="kk-preview-hd meta-preview-hd">🔵 Meta 광고 보고 미리보기</div>
-      <div class="meta-chat-bg">
+      <div class="kk-preview-hd">카카오톡 보고 미리보기</div>
+      <div class="chat-bg">
         <div class="chat-row">
-          <div class="meta-chat-avatar">📘</div>
+          <div class="chat-avatar">📊</div>
           <div>
-            <div class="chat-sender" style="color:rgba(0,0,0,.5)">마케터</div>
-            <div class="chat-bubble" id="meta-preview">Meta API 연결 후 데이터를 불러오면 보고 문구가 자동으로 생성됩니다.</div>
+            <div class="chat-sender">마케터</div>
+            <div class="chat-bubble" id="meta-preview">광고주 목록에서 메타 광고주를 선택 후
+조회하면 자동으로 생성됩니다.</div>
           </div>
         </div>
       </div>
-      <button class="btn-meta-copy" onclick="copyMeta()">📋 Meta 보고 문구 복사하기</button>
+      <button class="btn-meta-copy" onclick="copyMeta()">카카오톡 문구 복사하기</button>
     </div>
 
   </div>
@@ -663,8 +667,20 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
 <div class="modal-bg" id="modal-adv">
   <div class="modal">
     <div class="modal-title" id="modal-adv-title">광고주 추가</div>
-    <div class="modal-sub">네이버 광고 API 키를 입력하세요</div>
     <div class="sec-note">🛡 API 키는 이 브라우저에만 저장됩니다. 다른 기기에서는 보이지 않습니다.</div>
+
+    <!-- 플랫폼 선택 탭 -->
+    <div style="display:flex;gap:6px;margin-bottom:14px">
+      <button id="adv-tab-naver" onclick="setAdvPlatform('naver')"
+        style="flex:1;padding:8px 0;border-radius:8px;font-size:12px;font-weight:800;font-family:inherit;cursor:pointer;border:1.5px solid var(--g);background:var(--g2);color:var(--g);transition:all .13s">
+        🟢 네이버 광고
+      </button>
+      <button id="adv-tab-meta" onclick="setAdvPlatform('meta')"
+        style="flex:1;padding:8px 0;border-radius:8px;font-size:12px;font-weight:800;font-family:inherit;cursor:pointer;border:1.5px solid var(--border);background:var(--s3);color:var(--text3);transition:all .13s">
+        🔵 Meta 광고
+      </button>
+    </div>
+
     <div style="margin-bottom:10px">
       <div class="fg-label">이모지 선택</div>
       <div class="emoji-row" id="emoji-row"></div>
@@ -679,23 +695,75 @@ textarea.kk-inp::placeholder,input.kk-inp::placeholder{color:var(--text3);}
         <input type="text" class="fg-input name-inp" id="inp-cat" placeholder="예: 패션/의류">
       </div>
     </div>
-    <div class="fg">
-      <label class="fg-label">Customer ID *</label>
-      <input type="text" class="fg-input" id="inp-cid" placeholder="네이버 광고 고객 ID">
+
+    <!-- 네이버 필드 -->
+    <div id="adv-fields-naver">
+      <div class="fg">
+        <label class="fg-label">Customer ID *</label>
+        <input type="text" class="fg-input" id="inp-cid" placeholder="네이버 광고 고객 ID">
+      </div>
+      <div class="fg">
+        <label class="fg-label">Access License *</label>
+        <input type="text" class="fg-input" id="inp-lic" placeholder="API 접근 라이선스 키">
+      </div>
+      <div class="fg">
+        <label class="fg-label">Secret Key *</label>
+        <input type="password" class="fg-input" id="inp-sec" placeholder="비밀키">
+        <div class="fg-hint">⚠ Secret Key는 저장 즉시 마스킹됩니다</div>
+      </div>
     </div>
-    <div class="fg">
-      <label class="fg-label">Access License *</label>
-      <input type="text" class="fg-input" id="inp-lic" placeholder="API 접근 라이선스 키">
+
+    <!-- 메타 필드 -->
+    <div id="adv-fields-meta" style="display:none">
+      <div class="fg">
+        <label class="fg-label" style="display:flex;align-items:center;justify-content:space-between">
+          <span>Access Token *</span>
+          <a href="https://developers.facebook.com/tools/explorer/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:9.5px;font-weight:700">🔑 토큰 발급 →</a>
+        </label>
+        <input type="password" class="fg-input" id="inp-meta-tok" placeholder="EAAxxxxxxxxxxxxx…">
+        <div class="fg-hint">권한: ads_read · read_insights · ads_management</div>
+      </div>
+      <div class="fg">
+        <label class="fg-label">광고 계정 ID *</label>
+        <input type="text" class="fg-input" id="inp-meta-acct" placeholder="act_123456789 또는 숫자만">
+        <div class="fg-hint">비즈니스 관리자 → 광고 계정 → 숫자 ID</div>
+      </div>
     </div>
-    <div class="fg">
-      <label class="fg-label">Secret Key *</label>
-      <input type="password" class="fg-input" id="inp-sec" placeholder="비밀키">
-      <div class="fg-hint">⚠ Secret Key는 저장 즉시 마스킹됩니다</div>
-    </div>
+
     <div class="modal-btns">
       <button class="btn-del" id="btn-del-adv" onclick="deleteAdv()" style="display:none">삭제</button>
       <button class="btn-cancel" onclick="closeAdvModal()">취소</button>
       <button class="btn-save" onclick="saveAdv()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ META GEMINI SETTINGS MODAL ═══ -->
+<div class="modal-bg" id="modal-meta-gemini">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-title" style="display:flex;align-items:center;gap:8px">
+      <span>⚙️ Meta AI 설정</span>
+    </div>
+    <div class="modal-sub">Gemini API 키와 Meta 분석 프롬프트를 설정하세요</div>
+    <div class="fg">
+      <label class="fg-label" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Gemini API Key</span>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#2563eb;text-decoration:none;font-size:9.5px;font-weight:700">🔑 무료 발급받기 →</a>
+      </label>
+      <input type="password" class="fg-input" id="inp-meta-gemini-key" placeholder="AIza...">
+      <div class="fg-hint">네이버 AI 설정과 동일한 키를 사용해도 됩니다.</div>
+    </div>
+    <div class="fg" style="margin-top:4px">
+      <label class="fg-label" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Meta 전용 AI 프롬프트</span>
+        <button onclick="resetMetaGeminiPrompt()" style="background:none;border:none;color:var(--text3);font-size:9.5px;cursor:pointer;font-family:inherit;padding:0" onmouseover="this.style.color='#2563eb'" onmouseout="this.style.color='var(--text3)'">↺ 기본값으로</button>
+      </label>
+      <textarea id="inp-meta-gemini-prompt" class="fg-input name-inp" rows="7" style="font-family:'Noto Sans KR',sans-serif;font-size:11px;line-height:1.6;resize:vertical;min-height:140px"></textarea>
+      <div class="fg-hint">⚡ {data} 위치에 Meta 성과 데이터가 자동으로 삽입됩니다</div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeMetaGeminiModal()">취소</button>
+      <button class="btn-save" style="background:linear-gradient(135deg,#1d4ed8,#2563eb)" onclick="saveMetaGeminiSettings()">저장</button>
     </div>
   </div>
 </div>
@@ -967,11 +1035,27 @@ function switchTab(name, btn){
 
   if(name==='kakao'){
     syncKakaoPeriodButtons();
-    if(currentAdv){ loadKakaoData(); }
+    if(currentAdv && currentAdv.platform!=='meta') loadKakaoData();
   } else if(name==='meta'){
+    updateMetaAdvInfo();
     syncMetaPeriodButtons();
-    // Meta 탭 초기화: 저장된 자격증명 로드
-    loadMetaCredentials();
+    if(currentAdv && currentAdv.platform==='meta') metaFetchAndPreview();
+  }
+}
+
+function updateMetaAdvInfo(){
+  const infoEl=document.getElementById('meta-adv-info');
+  if(!infoEl) return;
+  if(currentAdv && currentAdv.platform==='meta'){
+    infoEl.style.display='flex';
+    const eEl=document.getElementById('meta-adv-emoji');
+    const nEl=document.getElementById('meta-adv-name');
+    const aEl=document.getElementById('meta-adv-acct');
+    if(eEl) eEl.textContent=currentAdv.emoji;
+    if(nEl) nEl.textContent=currentAdv.name;
+    if(aEl) aEl.textContent=currentAdv.metaAcct||'—';
+  } else {
+    infoEl.style.display='none';
   }
 }
 
@@ -1031,22 +1115,51 @@ async function selectAdv(id){
   selectedCamps=null; selectedGroups=null; selectedKws.clear();
   // 드롭다운 레이블 업데이트
   const lbl=document.getElementById('adv-dd-label');
-  if(lbl){lbl.textContent=currentAdv.emoji+' '+currentAdv.name;lbl.classList.remove('dd-placeholder');}
+  const platformBadge=currentAdv.platform==='meta'?' 🔵':'';
+  if(lbl){lbl.textContent=currentAdv.emoji+' '+currentAdv.name+platformBadge;lbl.classList.remove('dd-placeholder');}
   closeAdvDropdown();
-  // 기본 기간(카카오): 어제
-  kakaoPeriod='D1';
-  kakaoCustomRange=null;
 
   // 날짜 입력 기본값(어제)
   const y=new Date();
   const ys=addDays(y,-1);
   const toISO=d=>d.toISOString().slice(0,10);
-  const ks=document.getElementById('kakao-start');
-  const ke=document.getElementById('kakao-end');
-  if(ks&&ke){ ks.value=toISO(ys); ke.value=toISO(ys); }
 
-  syncKakaoPeriodButtons();
-  await loadKakaoData();
+  if(currentAdv.platform==='meta'){
+    // Meta 광고주: Meta 탭으로 전환 + 데이터 로드
+    metaPeriod='D1'; metaCustomRange=null;
+    const ms=document.getElementById('meta-start');
+    const me=document.getElementById('meta-end');
+    if(ms&&me){ms.value=toISO(ys);me.value=toISO(ys);}
+    // 탭 전환
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    const metaPanel=document.getElementById('tab-meta');
+    if(metaPanel) metaPanel.classList.add('active');
+    const metaTabBtn=[...document.querySelectorAll('.tab-btn')].find(b=>b.textContent.includes('메타'));
+    if(metaTabBtn) metaTabBtn.classList.add('active');
+    // 광고주 정보 표시
+    updateMetaAdvInfo();
+    syncMetaPeriodButtons();
+    await metaFetchAndPreview();
+  } else {
+    // 네이버 광고주: 카카오톡 탭으로 전환 + 데이터 로드
+    kakaoPeriod='D1'; kakaoCustomRange=null;
+    const ks=document.getElementById('kakao-start');
+    const ke=document.getElementById('kakao-end');
+    if(ks&&ke){ks.value=toISO(ys);ke.value=toISO(ys);}
+    // 기간 레이블 업데이트
+    const lbl=document.getElementById('kakao-period-label');
+    if(lbl) lbl.textContent=`[${toISO(ys).replace(/-/g,'.')}]`;
+    // 탭 전환
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    const kakaoPanel=document.getElementById('tab-kakao');
+    if(kakaoPanel) kakaoPanel.classList.add('active');
+    const kakaoTabBtn=[...document.querySelectorAll('.tab-btn')].find(b=>b.textContent.includes('네이버'));
+    if(kakaoTabBtn) kakaoTabBtn.classList.add('active');
+    syncKakaoPeriodButtons();
+    await loadKakaoData();
+  }
 }
 // goBack removed (dropdown 방식)
 function showEmptyState(msg){
@@ -1899,7 +2012,7 @@ async function doGeminiAnalysis(apiKey){
 
 // ══ ADVERTISER MODAL ══
 const EMOJIS=['👗','🍕','💄','🏠','📱','🐾','🍀','🎵','🏋','🛒','🚗','🌿','🎮','📚','✈','🏥'];
-let editingAdvId=null, selectedEmoji='👗';
+let editingAdvId=null, selectedEmoji='👗', selectedAdvPlatform='naver';
 
 function getNextAdvId(){
   const nums=advertisers.map(a=>{const m=String(a.id).match(/^adv_(\d+)$/);return m?parseInt(m[1]):0;});
@@ -1908,16 +2021,50 @@ function getNextAdvId(){
 }
 function randomEmoji(){return EMOJIS[Math.floor(Math.random()*EMOJIS.length)];}
 
+function setAdvPlatform(p){
+  selectedAdvPlatform=p;
+  const nBtn=document.getElementById('adv-tab-naver');
+  const mBtn=document.getElementById('adv-tab-meta');
+  const nFields=document.getElementById('adv-fields-naver');
+  const mFields=document.getElementById('adv-fields-meta');
+  if(p==='naver'){
+    nBtn.style.borderColor='var(--g)';nBtn.style.background='var(--g2)';nBtn.style.color='var(--g)';
+    mBtn.style.borderColor='var(--border)';mBtn.style.background='var(--s3)';mBtn.style.color='var(--text3)';
+    nFields.style.display='';mFields.style.display='none';
+  } else {
+    mBtn.style.borderColor='#2563eb';mBtn.style.background='rgba(37,99,235,.1)';mBtn.style.color='#2563eb';
+    nBtn.style.borderColor='var(--border)';nBtn.style.background='var(--s3)';nBtn.style.color='var(--text3)';
+    nFields.style.display='none';mFields.style.display='';
+  }
+}
+
 function openAdvModal(id){
-  editingAdvId=id; selectedEmoji=id?(advertisers.find(a=>a.id===id)?.emoji||randomEmoji()):randomEmoji();
+  editingAdvId=id;
+  selectedEmoji=id?(advertisers.find(a=>a.id===id)?.emoji||randomEmoji()):randomEmoji();
   document.getElementById('modal-adv-title').textContent=id?'광고주 수정':'광고주 추가';
   document.getElementById('btn-del-adv').style.display=id?'block':'none';
   renderEmojiRow();
   if(id){
     const a=advertisers.find(a=>a.id===id);
-    if(a){document.getElementById('inp-name').value=a.name;document.getElementById('inp-cat').value=a.cat||'';document.getElementById('inp-cid').value=a.cid;document.getElementById('inp-lic').value=a.lic;document.getElementById('inp-sec').value='';}
+    if(a){
+      document.getElementById('inp-name').value=a.name;
+      document.getElementById('inp-cat').value=a.cat||'';
+      const plat=a.platform||'naver';
+      setAdvPlatform(plat);
+      if(plat==='naver'){
+        document.getElementById('inp-cid').value=a.cid||'';
+        document.getElementById('inp-lic').value=a.lic||'';
+        document.getElementById('inp-sec').value='';
+      } else {
+        document.getElementById('inp-meta-tok').value=a.metaTok||'';
+        document.getElementById('inp-meta-acct').value=a.metaAcct||'';
+      }
+    }
   } else {
-    ['inp-name','inp-cat','inp-cid','inp-lic','inp-sec'].forEach(i=>document.getElementById(i).value='');
+    ['inp-name','inp-cat','inp-cid','inp-lic','inp-sec','inp-meta-tok','inp-meta-acct'].forEach(i=>{
+      const el=document.getElementById(i); if(el) el.value='';
+    });
+    setAdvPlatform('naver');
   }
   document.getElementById('modal-adv').classList.add('show');
 }
@@ -1929,16 +2076,32 @@ function saveAdv(){
   const name=document.getElementById('inp-name').value.trim();
   if(!name){showToast('⚠ 광고주명을 입력해주세요');return;}
   const cat=document.getElementById('inp-cat').value.trim();
-  const cid=document.getElementById('inp-cid').value.trim();
-  const lic=document.getElementById('inp-lic').value.trim();
-  const sec=document.getElementById('inp-sec').value.trim();
-  if(!cid||!lic){showToast('⚠ Customer ID와 License Key는 필수입니다');return;}
-  if(editingAdvId){
-    const idx=advertisers.findIndex(a=>a.id===editingAdvId);
-    if(idx>=0) advertisers[idx]={...advertisers[idx],emoji:selectedEmoji,name,cat,cid,lic,sec:sec||advertisers[idx].sec};
+  const platform=selectedAdvPlatform;
+
+  if(platform==='naver'){
+    const cid=document.getElementById('inp-cid').value.trim();
+    const lic=document.getElementById('inp-lic').value.trim();
+    const sec=document.getElementById('inp-sec').value.trim();
+    if(!cid||!lic){showToast('⚠ Customer ID와 License Key는 필수입니다');return;}
+    if(editingAdvId){
+      const idx=advertisers.findIndex(a=>a.id===editingAdvId);
+      if(idx>=0) advertisers[idx]={...advertisers[idx],emoji:selectedEmoji,name,cat,platform,cid,lic,sec:sec||advertisers[idx].sec};
+    } else {
+      if(!sec){showToast('⚠ Secret Key를 입력해주세요');return;}
+      advertisers.push({id:getNextAdvId(),emoji:selectedEmoji,name,cat,platform,cid,lic,sec});
+    }
   } else {
-    if(!sec){showToast('⚠ Secret Key를 입력해주세요');return;}
-    advertisers.push({id:getNextAdvId(),emoji:selectedEmoji,name,cat,cid,lic,sec});
+    // Meta
+    const metaTok=document.getElementById('inp-meta-tok').value.trim();
+    const metaAcct=document.getElementById('inp-meta-acct').value.trim();
+    if(!metaTok||!metaAcct){showToast('⚠ Access Token과 광고 계정 ID는 필수입니다');return;}
+    const normalAcct=metaAcct.startsWith('act_')?metaAcct:'act_'+metaAcct;
+    if(editingAdvId){
+      const idx=advertisers.findIndex(a=>a.id===editingAdvId);
+      if(idx>=0) advertisers[idx]={...advertisers[idx],emoji:selectedEmoji,name,cat,platform,metaTok,metaAcct:normalAcct};
+    } else {
+      advertisers.push({id:getNextAdvId(),emoji:selectedEmoji,name,cat,platform,metaTok,metaAcct:normalAcct});
+    }
   }
   saveAdvToStorage(advertisers);
   closeAdvModal();
@@ -2162,39 +2325,41 @@ let metaSectionHidden={comment:false,plan:false};
 let metaSelectedMetrics=new Set();
 
 // Meta 지표 정의
+// Meta API 매핑:
+//   spend        → insights.spend                          (광고비)
+//   impressions  → insights.impressions                    (노출수)
+//   clicks       → insights.clicks                         (클릭수)
+//   conversions  → insights.actions[purchase/lead 등]      (전환수)
+//   revenue      → insights.action_values[purchase 등]     (매출액)
+//   cpc          → insights.cpc                            (평균클릭비용)
+//   cpm          → insights.cpm                            (1000회 노출당 비용)
+//   ctr          → insights.ctr                            (클릭율 = clicks/impressions×100)
+//   cvr          → conversions / clicks × 100              (전환율, 파생 계산)
+//   cpa          → spend / conversions                     (전환당비용, 파생 계산)
+//   aov          → revenue / conversions                   (객단가, 파생 계산)
+//   rpc          → revenue / clicks                        (클릭당매출, 파생 계산)
 const META_METRIC_DEFS=[
-  {key:'spend',       label:'지출(광고비)',     sale:true,  nonsale:true },
-  {key:'impressions', label:'노출수',           sale:true,  nonsale:true },
-  {key:'clicks',      label:'클릭수',           sale:true,  nonsale:true },
-  {key:'reach',       label:'도달수',           sale:true,  nonsale:true },
-  {key:'frequency',   label:'빈도',             sale:false, nonsale:true },
-  {key:'ctr',         label:'CTR',              sale:true,  nonsale:true },
-  {key:'cpc',         label:'CPC',              sale:true,  nonsale:true },
-  {key:'cpm',         label:'CPM',              sale:true,  nonsale:true },
-  {key:'conversions', label:'전환수',           sale:true,  nonsale:false},
-  {key:'cvr',         label:'전환율(CVR)',      sale:true,  nonsale:false},
-  {key:'cpa',         label:'전환당비용(CPA)',  sale:true,  nonsale:false},
-  {key:'roas',        label:'광고수익률(ROAS)', sale:true,  nonsale:false},
+  {key:'spend',       label:'광고비(지출)',           meta_field:'spend',                                sale:true,  nonsale:true },
+  {key:'impressions', label:'노출수',                 meta_field:'impressions',                          sale:true,  nonsale:true },
+  {key:'clicks',      label:'클릭수',                 meta_field:'clicks',                               sale:true,  nonsale:true },
+  {key:'conversions', label:'전환수',                 meta_field:'actions[purchase/lead]',               sale:true,  nonsale:true },
+  {key:'revenue',     label:'매출액',                 meta_field:'action_values[purchase]',              sale:true,  nonsale:false},
+  {key:'cpc',         label:'평균클릭비용(CPC)',       meta_field:'cpc',                                  sale:true,  nonsale:true },
+  {key:'cpm',         label:'CPM',                    meta_field:'cpm',                                  sale:true,  nonsale:true },
+  {key:'ctr',         label:'클릭율(CTR)',             meta_field:'ctr',                                  sale:true,  nonsale:false},
+  {key:'cvr',         label:'전환율(CVR)',             meta_field:'conversions/clicks×100 (파생)',        sale:true,  nonsale:true },
+  {key:'roas',        label:'광고수익률(ROAS)',         meta_field:'action_values/spend×100 (파생)',       sale:true,  nonsale:false},
+  {key:'cpa',         label:'전환당비용(CPA)',         meta_field:'spend/conversions (파생)',             sale:true,  nonsale:true },
+  {key:'aov',         label:'객단가',                 meta_field:'action_values/conversions (파생)',     sale:true,  nonsale:false},
 ];
 // 초기 전체 선택
 META_METRIC_DEFS.forEach(m=>metaSelectedMetrics.add(m.key));
 
-// ── Meta localStorage 저장 키 ──
+// ── Meta localStorage 저장 키 (더 이상 별도 credential 저장 불필요, 광고주에 포함) ──
+// (하위 호환용으로 함수는 유지)
 const META_STORE='meta_credentials_v1';
-function saveMetaCredentials(tok,acct){
-  try{localStorage.setItem(META_STORE,btoa(JSON.stringify({tok,acct})));}catch(e){}
-}
-function loadMetaCredentials(){
-  try{
-    const r=localStorage.getItem(META_STORE);
-    if(!r) return;
-    const d=JSON.parse(atob(r));
-    const tokEl=document.getElementById('meta-token');
-    const acctEl=document.getElementById('meta-acct');
-    if(tokEl&&d.tok) tokEl.value=d.tok;
-    if(acctEl&&d.acct) acctEl.value=d.acct;
-  }catch(e){}
-}
+function saveMetaCredentials(tok,acct){}
+function loadMetaCredentials(){}
 
 // ── Meta 기간 조절 ──
 function syncMetaPeriodButtons(){
@@ -2206,9 +2371,7 @@ function syncMetaPeriodButtons(){
 function setMetaPeriod(p){
   metaPeriod=p; metaCustomRange=null;
   syncMetaPeriodButtons();
-  const tok=document.getElementById('meta-token')?.value.trim();
-  const acct=document.getElementById('meta-acct')?.value.trim();
-  if(tok&&acct) metaFetchAndPreview();
+  if(currentAdv?.platform==='meta') metaFetchAndPreview();
 }
 function applyMetaCustomRange(){
   const s=document.getElementById('meta-start')?.value;
@@ -2217,9 +2380,7 @@ function applyMetaCustomRange(){
   metaCustomRange={start:new Date(s+'T00:00:00'),end:new Date(e+'T00:00:00')};
   metaPeriod='CUSTOM';
   syncMetaPeriodButtons();
-  const tok=document.getElementById('meta-token')?.value.trim();
-  const acct=document.getElementById('meta-acct')?.value.trim();
-  if(tok&&acct) metaFetchAndPreview();
+  if(currentAdv?.platform==='meta') metaFetchAndPreview();
 }
 
 // ── Meta 지표 토글 ──
@@ -2294,32 +2455,55 @@ function toggleMetaSectionHide(id){
   if(lastMetaCur) updateMetaPreview(lastMetaCur,lastMetaPrev||{});
 }
 
-// ── Meta API 연결 ──
-async function metaConnect(){
-  const tok=document.getElementById('meta-token')?.value.trim();
-  const acct=document.getElementById('meta-acct')?.value.trim();
-  if(!tok||!acct){showToast('⚠ Access Token과 계정 ID를 입력해주세요');return;}
-  saveMetaCredentials(tok,acct);
-  await metaFetchAndPreview();
+// ── Meta API 연결 (광고주 데이터에서 직접 읽음) ──
+async function metaFetchAndPreview(){
+  if(!currentAdv||currentAdv.platform!=='meta'){
+    document.getElementById('meta-preview').textContent='상단 드롭다운에서 Meta 광고주를 선택해주세요.';
+    return;
+  }
+  const tok=currentAdv.metaTok;
+  const acct=currentAdv.metaAcct;
+  if(!tok||!acct){showToast('⚠ 광고주에 Meta API 정보가 없습니다');return;}
+
+  const statusEl=document.getElementById('meta-status');
+  if(statusEl){statusEl.className='meta-status';statusEl.textContent='';statusEl.style.display='none';}
+  showLoading();
+
+  try{
+    const{since,until,prevSince,prevUntil,pm}=getMetaDateRange();
+    const lbl=document.getElementById('meta-period-label');
+    if(lbl) lbl.textContent=`[${since.replace(/-/g,'.')} ~ ${until.replace(/-/g,'.')}]`;
+    const ms=document.getElementById('meta-start');
+    const me=document.getElementById('meta-end');
+    if(ms) ms.value=since; if(me) me.value=until;
+
+    const [curRaw,prevRaw]=await Promise.all([
+      metaFetchInsights(tok,acct,since,until),
+      metaFetchInsights(tok,acct,prevSince,prevUntil)
+    ]);
+    const cur=parseMetaInsights(curRaw);
+    const prev=parseMetaInsights(prevRaw);
+    const f=s=>s.replace(/-/g,'.');
+    metaPeriodMeta={...pm,curLabel:`${f(since)} ~ ${f(until)}`,prevLabel:`${f(prevSince)} ~ ${f(prevUntil)}`};
+
+    if(statusEl){statusEl.className='meta-status ok';statusEl.textContent=`✅ 로드 완료 (${since} ~ ${until})`;statusEl.style.display='block';}
+    updateMetaPreview(cur,prev);
+    showToast('✅ Meta 데이터 로드 완료');
+  }catch(e){
+    console.error(e);
+    if(statusEl){statusEl.className='meta-status err';statusEl.textContent='❌ '+e.message;statusEl.style.display='block';}
+    showToast('❌ Meta API 오류: '+e.message);
+  }finally{hideLoading();}
 }
 
 function getMetaDateRange(){
   const pm=getPeriodDates(metaPeriod,metaCustomRange);
   metaPeriodMeta=pm;
-  const f=d=>{
-    const y=d.getFullYear(),mo=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');
-    return `${y}-${mo}-${day}`;
-  };
-  // 이전 기간 날짜
-  return {
-    since:f(pm.curS), until:f(pm.curE),
-    prevSince:f(pm.ps), prevUntil:f(pm.pe),
-    pm
-  };
+  const f=d=>{const y=d.getFullYear(),mo=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${mo}-${day}`;};
+  return{since:f(pm.curS),until:f(pm.curE),prevSince:f(pm.ps),prevUntil:f(pm.pe),pm};
 }
 
 async function metaFetchInsights(tok,acct,since,until){
-  // 계정 ID 정규화
   const normalAcct=acct.startsWith('act_')?acct:'act_'+acct;
   const fields='spend,impressions,clicks,reach,frequency,ctr,cpc,cpm,actions,action_values';
   const url=`https://graph.facebook.com/v21.0/${normalAcct}/insights?fields=${fields}&time_range=%7B%22since%22%3A%22${since}%22%2C%22until%22%3A%22${until}%22%7D&access_token=${tok}`;
@@ -2331,80 +2515,25 @@ async function metaFetchInsights(tok,acct,since,until){
 
 const META_CONV_TYPES=['offsite_conversion.fb_pixel_purchase','purchase','lead','complete_registration'];
 function parseMetaInsights(d){
-  if(!d) return {spend:0,impressions:0,clicks:0,reach:0,frequency:0,ctr:0,cpc:0,cpm:0,conversions:0,cvr:0,cpa:0,roas:0,revenue:0};
+  if(!d) return{spend:0,impressions:0,clicks:0,conversions:0,revenue:0,cpc:0,cpm:0,ctr:0,cvr:0,roas:0,cpa:0,aov:0};
   const spend=parseFloat(d.spend||0);
   const impressions=parseFloat(d.impressions||0);
   const clicks=parseFloat(d.clicks||0);
-  const reach=parseFloat(d.reach||0);
-  const frequency=parseFloat(d.frequency||0);
-  const ctr=parseFloat(d.ctr||0);
-  const cpc=parseFloat(d.cpc||0)*1; // Already in currency
-  const cpm=parseFloat(d.cpm||0)*1;
+  const cpc=parseFloat(d.cpc||0);
+  const cpm=parseFloat(d.cpm||0);
+  const ctr=parseFloat(d.ctr||0);  // Meta가 내려주는 CTR (clicks/impressions×100)
   // 전환수: actions에서 추출
   let conversions=0;
-  (d.actions||[]).forEach(a=>{if(META_CONV_TYPES.includes(a.action_type)) conversions+=parseFloat(a.value||0);});
+  (d.actions||[]).forEach(a=>{if(META_CONV_TYPES.includes(a.action_type))conversions+=parseFloat(a.value||0);});
   // 매출액: action_values에서 추출
   let revenue=0;
-  (d.action_values||[]).forEach(a=>{if(META_CONV_TYPES.includes(a.action_type)) revenue+=parseFloat(a.value||0);});
-  const cvr=clicks?conversions/clicks*100:0;
-  const cpa=conversions?spend/conversions:0;
-  const roas=spend?revenue/spend*100:0;
-  return {spend,impressions,clicks,reach,frequency,ctr,cpc,cpm,conversions,cvr,cpa,roas,revenue};
-}
-
-async function metaFetchAndPreview(){
-  const tok=document.getElementById('meta-token')?.value.trim();
-  const acct=document.getElementById('meta-acct')?.value.trim();
-  if(!tok||!acct) return;
-
-  const statusEl=document.getElementById('meta-status');
-  statusEl.className='meta-status';
-  statusEl.textContent='';
-  showLoading();
-
-  try{
-    const{since,until,prevSince,prevUntil,pm}=getMetaDateRange();
-
-    // 기간 레이블 업데이트
-    const lbl=document.getElementById('meta-period-label');
-    if(lbl) lbl.textContent=`[${since.replace(/-/g,'.')} ~ ${until.replace(/-/g,'.')}]`;
-
-    // 날짜 입력 동기화
-    const ms=document.getElementById('meta-start');
-    const me=document.getElementById('meta-end');
-    if(ms) ms.value=since; if(me) me.value=until;
-
-    // 현재 + 이전 기간 동시 조회
-    const [curRaw,prevRaw]=await Promise.all([
-      metaFetchInsights(tok,acct,since,until),
-      metaFetchInsights(tok,acct,prevSince,prevUntil)
-    ]);
-
-    const cur=parseMetaInsights(curRaw);
-    const prev=parseMetaInsights(prevRaw);
-
-    // 날짜 레이블 수정 (Meta 스타일)
-    const f=s=>s.replace(/-/g,'.');
-    metaPeriodMeta={
-      ...pm,
-      curLabel:`${f(since)} ~ ${f(until)}`,
-      prevLabel:`${f(prevSince)} ~ ${f(prevUntil)}`
-    };
-
-    statusEl.className='meta-status ok';
-    statusEl.textContent=`✅ 데이터 로드 완료 (${since} ~ ${until})`;
-
-    updateMetaPreview(cur,prev);
-    saveMetaCredentials(tok,acct);
-    showToast('✅ Meta 데이터 로드 완료');
-  }catch(e){
-    console.error(e);
-    statusEl.className='meta-status err';
-    statusEl.textContent='❌ '+e.message;
-    showToast('❌ Meta API 오류: '+e.message);
-  }finally{
-    hideLoading();
-  }
+  (d.action_values||[]).forEach(a=>{if(META_CONV_TYPES.includes(a.action_type))revenue+=parseFloat(a.value||0);});
+  // 파생 지표
+  const roas  = spend        ? revenue / spend * 100      : 0;  // 광고수익률
+  const cvr  = clicks      ? conversions / clicks * 100  : 0;  // 전환율
+  const cpa  = conversions ? spend / conversions          : 0;  // 전환당비용
+  const aov  = conversions ? revenue / conversions        : 0;  // 객단가
+  return{spend,impressions,clicks,conversions,revenue,cpc,cpm,ctr,cvr,roas,cpa,aov};
 }
 
 // ── Meta 미리보기 생성 ──
@@ -2441,18 +2570,18 @@ function updateMetaPreview(cur,prev){
   const planSection=metaSectionHidden.plan?'':`\n\n■ 금일 운영 계획\n${planVal}`;
 
   const lines=[
-    metaSelectedMetrics.has('spend')       ?`- 지출(광고비): ₩${W(cur.spend)}${pctChange(cur.spend,prev.spend)}`:null,
+    metaSelectedMetrics.has('spend')       ?`- 광고비(지출): ₩${W(cur.spend)}${pctChange(cur.spend,prev.spend)}`:null,
     metaSelectedMetrics.has('impressions') ?`- 노출수: ${W(cur.impressions)}회${pctChange(cur.impressions,prev.impressions)}`:null,
     metaSelectedMetrics.has('clicks')      ?`- 클릭수: ${W(cur.clicks)}회${pctChange(cur.clicks,prev.clicks)}`:null,
-    metaSelectedMetrics.has('reach')       ?`- 도달수: ${W(cur.reach)}명${pctChange(cur.reach,prev.reach)}`:null,
-    metaSelectedMetrics.has('frequency')   ?`- 빈도: ${F2(cur.frequency)}회${pointChange(cur.frequency,prev.frequency,2)}`:null,
-    metaSelectedMetrics.has('ctr')         ?`- CTR: ${F2(cur.ctr)}%${pointChange(cur.ctr,prev.ctr,2)}`:null,
-    metaSelectedMetrics.has('cpc')         ?`- CPC: ₩${W(cur.cpc)}${pctChange(cur.cpc,prev.cpc)}`:null,
-    metaSelectedMetrics.has('cpm')         ?`- CPM: ₩${W(cur.cpm)}${pctChange(cur.cpm,prev.cpm)}`:null,
     metaSelectedMetrics.has('conversions') ?`- 전환수: ${W(cur.conversions)}건${pctChange(cur.conversions,prev.conversions)}`:null,
+    metaSelectedMetrics.has('revenue')     ?`- 매출액: ₩${W(cur.revenue)}${pctChange(cur.revenue,prev.revenue)}`:null,
+    metaSelectedMetrics.has('cpc')         ?`- 평균클릭비용(CPC): ₩${W(cur.cpc)}${pctChange(cur.cpc,prev.cpc)}`:null,
+    metaSelectedMetrics.has('cpm')         ?`- CPM: ₩${W(cur.cpm)}${pctChange(cur.cpm,prev.cpm)}`:null,
+    metaSelectedMetrics.has('ctr')         ?`- 클릭율(CTR): ${F2(cur.ctr)}%${pointChange(cur.ctr,prev.ctr,2)}`:null,
     metaSelectedMetrics.has('cvr')         ?`- 전환율(CVR): ${F2(cur.cvr)}%${pointChange(cur.cvr,prev.cvr,2)}`:null,
+    metaSelectedMetrics.has('roas')        ?`- 광고수익률(ROAS): ${Math.round(Number(cur.roas||0))}%${pointChange(cur.roas,prev.roas,0)}`:null,
     metaSelectedMetrics.has('cpa')         ?`- 전환당비용(CPA): ₩${W(cur.cpa)}${pctChange(cur.cpa,prev.cpa)}`:null,
-    metaSelectedMetrics.has('roas')        ?`- ROAS: ${Math.round(Number(cur.roas||0))}%${pointChange(cur.roas,prev.roas,0)}`:null,
+    metaSelectedMetrics.has('aov')         ?`- 객단가: ₩${W(cur.aov)}${pctChange(cur.aov,prev.aov)}`:null,
   ].filter(Boolean);
 
   const msg=
@@ -2485,18 +2614,119 @@ function copyMeta(){
   });
 });
 
-// onload 시 Meta 토글 렌더
+// ── Meta Gemini AI ──
+const META_GEMINI_KEY_STORE='meta_gemini_key_v1';
+const META_GEMINI_PROMPT_STORE='meta_gemini_prompt_v1';
+const META_DEFAULT_PROMPT=`당신은 메타 광고 전문 마케터입니다.
+아래 광고 성과 데이터를 분석해서 카카오톡 보고 문자에 들어갈 마케터 코멘트를 작성해주세요.
+
+조건:
+- 3~5문장 이내로 간결하게
+- 긍정적 성과와 개선 필요 사항을 균형있게
+- 수치를 직접 언급하지 말고 흐름(증가/감소/유지)으로 표현
+- 전문적이고 자연스러운 한국어
+- 불필요한 인사말, 서론 없이 바로 분석 내용만
+
+{data}`;
+
+function getMetaGeminiKey(){try{const r=localStorage.getItem(META_GEMINI_KEY_STORE);return r?atob(r):getGeminiKey();}catch{return '';}}
+function saveMetaGeminiKey(k){try{localStorage.setItem(META_GEMINI_KEY_STORE,btoa(k));}catch{}}
+function getMetaGeminiPrompt(){try{const r=localStorage.getItem(META_GEMINI_PROMPT_STORE);return r||META_DEFAULT_PROMPT;}catch{return META_DEFAULT_PROMPT;}}
+function saveMetaGeminiPrompt(p){try{localStorage.setItem(META_GEMINI_PROMPT_STORE,p);}catch{}}
+
+function openMetaGeminiSettingsModal(){
+  document.getElementById('inp-meta-gemini-key').value=getMetaGeminiKey();
+  document.getElementById('inp-meta-gemini-prompt').value=getMetaGeminiPrompt();
+  document.getElementById('modal-meta-gemini').classList.add('show');
+}
+function closeMetaGeminiModal(){document.getElementById('modal-meta-gemini').classList.remove('show');}
+function resetMetaGeminiPrompt(){document.getElementById('inp-meta-gemini-prompt').value=META_DEFAULT_PROMPT;}
+function saveMetaGeminiSettings(){
+  const k=document.getElementById('inp-meta-gemini-key').value.trim();
+  const p=document.getElementById('inp-meta-gemini-prompt').value.trim();
+  if(!k){showToast('⚠ API 키를 입력해주세요');return;}
+  saveMetaGeminiKey(k);
+  if(p) saveMetaGeminiPrompt(p);
+  closeMetaGeminiModal();
+  showToast('✅ Meta AI 설정이 저장되었습니다');
+}
+
+async function runMetaAiAnalysis(){
+  if(!lastMetaCur){showToast('⚠ 먼저 데이터를 불러와주세요');return;}
+  const key=getMetaGeminiKey();
+  if(!key){openMetaGeminiSettingsModal();showToast('💡 Gemini API 키를 먼저 입력해주세요');return;}
+  await doMetaGeminiAnalysis(key);
+}
+
+async function doMetaGeminiAnalysis(apiKey){
+  const btn=document.getElementById('btn-meta-ai-analyze');
+  const icon=document.getElementById('meta-ai-btn-icon');
+  const txt=document.getElementById('meta-ai-btn-text');
+  btn.disabled=true; icon.textContent='⏳'; txt.textContent=' 분석 중…';
+  try{
+    const cur=lastMetaCur, prev=lastMetaPrev||{};
+    const pm=metaPeriodMeta||getPeriodDates(metaPeriod,metaCustomRange);
+    const W=n=>Math.round(Number(n||0)).toLocaleString('ko-KR');
+    const pct=(c,p)=>p?((c-p)/p*100).toFixed(1)+'%':'이전 데이터 없음';
+    const dataStr=
+`Meta 광고 성과 (${pm.prevLabel} → ${pm.curLabel})
+- 광고비(지출): ₩${W(cur.spend)} (전기간 ₩${W(prev.spend)}, ${pct(cur.spend,prev.spend)})
+- 노출수: ${W(cur.impressions)}회 (${pct(cur.impressions,prev.impressions)})
+- 클릭수: ${W(cur.clicks)}회 (${pct(cur.clicks,prev.clicks)})
+- 전환수: ${W(cur.conversions)}건 (${pct(cur.conversions,prev.conversions)})
+- 매출액: ₩${W(cur.revenue)} (${pct(cur.revenue,prev.revenue)})
+- 평균클릭비용(CPC): ₩${W(cur.cpc)} (${pct(cur.cpc,prev.cpc)})
+- CPM: ₩${W(cur.cpm)} (${pct(cur.cpm,prev.cpm)})
+- 클릭율(CTR): ${Number(cur.ctr||0).toFixed(2)}% (전기간 ${Number(prev.ctr||0).toFixed(2)}%)
+- 전환율(CVR): ${Number(cur.cvr||0).toFixed(2)}% (전기간 ${Number(prev.cvr||0).toFixed(2)}%)
+- 광고수익률(ROAS): ${Math.round(cur.roas||0)}% (전기간 ${Math.round(prev.roas||0)}%)
+- 전환당비용(CPA): ₩${W(cur.cpa)} (${pct(cur.cpa,prev.cpa)})
+- 객단가: ₩${W(cur.aov)} (${pct(cur.aov,prev.aov)})`;
+
+    const promptTemplate=getMetaGeminiPrompt();
+    const prompt=promptTemplate.includes('{data}')?promptTemplate.replace('{data}',dataStr):promptTemplate+'\n\n'+dataStr;
+
+    const resp=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-goog-api-key':apiKey},
+      body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})
+    });
+    if(!resp.ok){
+      const err=await resp.json().catch(()=>({}));
+      if(resp.status===400||resp.status===403){saveMetaGeminiKey('');openMetaGeminiSettingsModal();showToast('⚠ API 키가 올바르지 않습니다');return;}
+      throw new Error(err?.error?.message||'API 오류 '+resp.status);
+    }
+    const data=await resp.json();
+    const result=data?.candidates?.[0]?.content?.parts?.[0]?.text||'';
+    if(!result) throw new Error('응답 없음');
+    document.getElementById('meta-comment').value=result.trim();
+    if(lastMetaCur) updateMetaPreview(lastMetaCur,lastMetaPrev||{});
+    showToast('✨ Meta AI 분석 완료!');
+  }catch(e){
+    console.error(e); showToast('❌ AI 분석 실패: '+e.message);
+  }finally{
+    btn.disabled=false; icon.textContent='✨'; txt.textContent=' AI 분석';
+  }
+}
+
+// onload 통합
 const _origOnload=window.onload;
 window.onload=async()=>{
   if(_origOnload) await _origOnload();
   renderMetaMetricToggles();
-  // 기본 어제 날짜 세팅
-  const y=new Date(), ys=addDays(y,-1);
+  const ys=addDays(new Date(),-1);
   const toISO=d=>d.toISOString().slice(0,10);
+  // 메타 날짜
   const ms=document.getElementById('meta-start');
   const me=document.getElementById('meta-end');
   if(ms&&me){ms.value=toISO(ys);me.value=toISO(ys);}
+  // 네이버 날짜
+  const ks=document.getElementById('kakao-start');
+  const ke=document.getElementById('kakao-end');
+  if(ks&&ke){ks.value=toISO(ys);ke.value=toISO(ys);}
   syncMetaPeriodButtons();
+  syncKakaoPeriodButtons();
+  updateMetaAdvInfo();
 };
 
 </script>
